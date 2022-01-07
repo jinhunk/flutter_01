@@ -35,7 +35,16 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   email_validator: ^2.0.1 #이메일검사
-  fluttertoast: ^8.0.8
+  # image_picker: ^0.8.4+4
+  transparent_image: ^2.0.0
+
+  
+
+  firebase_storage: ^10.2.4
+  cloud_firestore: ^3.1.5 #파이어베이스와 연동해주는 패키지
+  firebase_core: ^1.10.6 #Firebase.initializeApp() 호출할수있음
+  firebase_auth: ^3.3.4
+
 
 dev_dependencies:
   flutter_test:
