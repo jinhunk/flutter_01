@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           if (snapshot.hasData) {
             return Procedure2();
           } else {
-            return OpenPage();
+            return Procedure3();
           }
         },
         stream: FirebaseAuth.instance.authStateChanges(),

@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
+
 
 class ManPage extends StatefulWidget {
   const ManPage({Key? key}) : super(key: key);
