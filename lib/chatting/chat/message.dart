@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_01/chatting/chat/chat_bubble.dart';
 
@@ -29,8 +28,11 @@ class Messages extends StatelessWidget {
             reverse: true, // 채팅내용이 밑에서 부터 나오는 동작
             itemCount: chatDocs.length,
             itemBuilder: (context, index) {
-              return ChatBubble(chatDocs[index]['text'],
-                  chatDocs[index]['userID'].toString() == user!.uid);
+              return ChatBubbles(
+                chatDocs[index]['text'],
+                chatDocs[index]['userID'].toString() == user!.uid,
+                chatDocs[index]['userName'].toString(),
+              );
             },
           ),
         );

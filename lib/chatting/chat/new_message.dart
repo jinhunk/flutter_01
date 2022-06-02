@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NewMessage extends StatefulWidget {
   const NewMessage({Key? key}) : super(key: key);
@@ -13,16 +14,32 @@ class NewMessage extends StatefulWidget {
 class _NewMessageState extends State<NewMessage> {
   final _controller = TextEditingController();
   var _userEnterMessage = '';
-  void _sendMessage() {
+
+  void _sendMessage() async {
     FocusScope.of(context).unfocus();
-    final user = FirebaseAuth.instance.currentUser; // 유저사용자 정보
+    final user = FirebaseAuth.instance.currentUser; // 현 사용자
+    final userData = await FirebaseFirestore.instance
+        .collection('user')
+        .doc(user!.uid)
+        .get(); //유저데이정보
     FirebaseFirestore.instance.collection('chat').add({
       'text': _userEnterMessage,
       'time': Timestamp.now(),
-      'userID': user!.uid
+      'userID': user.uid,
+      'userName': userData.data()!['이름'],
+      'userImage': userData['사진']
     });
     _controller.clear();
+    setState(() {
+      Time();
+    });
   }
+
+  void Time() {
+    DateFormat.jm().format(
+      DateTime.now(),
+    );
+  } //채팅창 몇시 몇분
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +50,7 @@ class _NewMessageState extends State<NewMessage> {
         children: [
           Expanded(
             child: TextField(
+              maxLines: null, //자동 줄바꿈
               controller: _controller,
               decoration: InputDecoration(
                 labelText: ('메세지를 전달하세요.'),

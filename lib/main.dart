@@ -5,6 +5,7 @@ import 'package:flutter_01/%20Procedure/procedure2.dart';
 import 'package:flutter_01/%20Procedure/procedure3.dart';
 
 import 'package:flutter_01/screens/Chat_Screen.dart';
+import 'package:flutter_01/screens/Open.dart';
 import 'package:flutter_01/screens/OpenPage.dart';
 
 void main() async {
@@ -23,9 +24,9 @@ class MyApp extends StatelessWidget {
       home: StreamBuilder(
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Procedure2();
+            return Open();
           } else {
-            return Procedure3();
+            return OpenPage();
           }
         },
         stream: FirebaseAuth.instance.authStateChanges(),

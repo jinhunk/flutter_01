@@ -1,5 +1,7 @@
 // import 'package:flutter/material.dart';
 
+import 'package:image_picker/image_picker.dart';
+
 class UserModel {
   String? age;
   String? uid;
@@ -16,7 +18,7 @@ class UserModel {
   String? distance;
   String? address;
   // String? tag;
-  List<String>? imageURL;
+  String? imageURL;
   UserModel({
     this.uid,
     this.name,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_01/%20Procedure/procedure2.dart';
 import 'package:flutter_01/confing/Colors.dart';
-import 'package:flutter_01/screens/LoginPage.dart';
 
 class Procedure1 extends StatefulWidget {
   const Procedure1({Key? key}) : super(key: key);

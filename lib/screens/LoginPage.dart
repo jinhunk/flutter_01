@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_01/Model/UserModel.dart';
 import 'package:flutter_01/confing/Colors.dart';
 import 'package:flutter_01/screens/Chat_Screen.dart';
+import 'package:flutter_01/screens/Homepage.dart';
 import 'package:flutter_01/screens/Signup.dart';
+import 'package:flutter_01/screens/Woman/HomeW.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -185,8 +187,13 @@ class _LoginPageState extends State<LoginPage> {
                         setState(() {
                           showspinner = true;
                         });
-                        _login();
                         _isLoginScreen();
+                        _login();
+
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage()));
                       },
                       child: const Text(
                         '로그인',

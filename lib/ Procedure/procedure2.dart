@@ -399,8 +399,8 @@ class _Procedure2State extends State<Procedure2> {
     if (isValid2) {
       setState(() {
         _formKey.currentState!.save();
-        // Navigator.push(
-        //     context, MaterialPageRoute(builder: (context) => (Procedure3())));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => (Procedure3())));
       });
     }
   }

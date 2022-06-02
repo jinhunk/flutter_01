@@ -4,6 +4,8 @@ import 'package:flutter_01/confing/Colors.dart';
 import 'package:flutter_01/screens/LoginPage.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+// import 'package:geocoding/geocoding.dart';
+// import 'package:geolocator/geolocator.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -17,7 +19,7 @@ class _SettingPageState extends State<SettingPage> {
   var _longitude = '';
   var _altitude = '';
   var _speed = '';
-  var _address = '위치';
+  var _address = '경기도 구리시';
 
   Future<void> _updatePosition() async {
     Position pos = await _determinePosition();
@@ -168,30 +170,29 @@ class _SettingPageState extends State<SettingPage> {
                   )
                 ],
               ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0, left: 15.0),
-                    child: Text(
-                      '활동지역',
-                      style: TextStyle(color: Colors.black, fontSize: 18.0),
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 2.0,
-                  ),
-                  TextButton.icon(
-                    onPressed: _updatePosition,
-                    icon: Icon(
-                      Icons.location_on,
-                      color: Colorss.indexColor,
-                    ),
-                    label: Text(
-                      _address,
-                      style: TextStyle(color: Colorss.indexColor),
-                    ),
-                  )
-                ],
+              ListTile(
+                onTap: () {},
+                title: Text('활동지역'),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextButton.icon(
+                      onPressed: () {
+                        _determinePosition();
+                      },
+                      icon: Icon(
+                        Icons.location_on,
+                        size: 30.0,
+                        color: Colorss.indexColor,
+                      ),
+                      label: Text(
+                        _address,
+                        style: TextStyle(
+                            color: Colorss.indexColor, fontSize: 17.0),
+                      ),
+                    )
+                  ],
+                ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 60.0,

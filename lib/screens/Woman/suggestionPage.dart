@@ -16,8 +16,8 @@ class _SuggestionPageState extends State<SuggestionPage> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 17.0, left: 17.0),
+              const Padding(
+                padding: EdgeInsets.only(top: 17.0, left: 17.0),
                 child: Text(
                   '오늘의 추천',
                   style: TextStyle(
@@ -43,10 +43,9 @@ class _SuggestionPageState extends State<SuggestionPage> {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         Padding(
-                          padding:
-                              const EdgeInsets.only(left: 10.0, top: 290.0),
+                          padding: EdgeInsets.only(left: 10.0, top: 290.0),
                           child: Text(
                             '김유정  , 25',
                             style: TextStyle(
@@ -56,7 +55,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
+                          padding: EdgeInsets.only(left: 10.0),
                           child: Text(
                             '2 시간 전  , 700m',
                             style: TextStyle(
@@ -87,10 +86,9 @@ class _SuggestionPageState extends State<SuggestionPage> {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         Padding(
-                          padding:
-                              const EdgeInsets.only(left: 10.0, top: 280.0),
+                          padding: EdgeInsets.only(left: 10.0, top: 280.0),
                           child: Text(
                             '박민영  , 27',
                             style: TextStyle(
@@ -100,7 +98,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
+                          padding: EdgeInsets.only(left: 10.0),
                           child: Text(
                             '2 시간 전  , 700m',
                             style: TextStyle(

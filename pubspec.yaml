@@ -29,6 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+    
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -37,7 +38,11 @@ dependencies:
   email_validator: ^2.0.1 #이메일검사
   image_picker: ^0.8.4+4
   transparent_image: ^2.0.0
-
+  intl: ^0.17.0
+  geolocator: ^8.2.0
+  geocoding: ^2.0.2
+  flutter_chat_bubble: ^2.0.0
+  introduction_screen: ^3.0.2
   
 
   firebase_storage: ^10.2.5
@@ -71,6 +76,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/김유정.jpg
+    - images/박민영.jpg
     - images/dice1.jpg
     - images/dice4.jpg
     - images/dice2.jpg

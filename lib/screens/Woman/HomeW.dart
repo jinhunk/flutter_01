@@ -19,40 +19,46 @@ class _HomeWState extends State<HomeW> {
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.white,
-          title: Padding(
-            padding: EdgeInsets.only(right: 140.0),
-            child: TabBar(
-              unselectedLabelColor: Colors.grey,
-              indicatorColor: Colorss.indexColor,
-              indicatorSize: TabBarIndicatorSize.label,
-              tabs: [
-                Tab(
-                  child: Text(
-                    '추천',
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Tab(
-                  child: Text(
-                    '라운지',
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                  ),
+          flexibleSpace: Padding(
+            padding: const EdgeInsets.only(right: 222.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: const [
+                TabBar(
+                  unselectedLabelColor: Colors.grey,
+                  indicatorColor: Colorss.indexColor,
+                  indicatorSize: TabBarIndicatorSize.label,
+                  tabs: [
+                    Tab(
+                      child: Text(
+                        '추천',
+                        style: TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Tab(
+                      child: Text(
+                        '라운지',
+                        style: TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
           actions: [
             IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.access_alarm,
-                  color: Colorss.indexColor,
-                ))
+              onPressed: () {},
+              icon: const Icon(
+                Icons.access_alarm,
+                color: Colorss.indexColor,
+              ),
+            ),
           ],
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             SuggestionPage(),
             Icon(Icons.ac_unit_outlined),
