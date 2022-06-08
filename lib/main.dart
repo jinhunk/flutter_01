@@ -1,10 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_01/%20Procedure/procedure2.dart';
-import 'package:flutter_01/%20Procedure/procedure3.dart';
-
-import 'package:flutter_01/screens/Chat_Screen.dart';
 import 'package:flutter_01/screens/Open.dart';
 import 'package:flutter_01/screens/OpenPage.dart';
 
@@ -24,9 +20,9 @@ class MyApp extends StatelessWidget {
       home: StreamBuilder(
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Open();
+            return const Open();
           } else {
-            return OpenPage();
+            return const OpenPage();
           }
         },
         stream: FirebaseAuth.instance.authStateChanges(),

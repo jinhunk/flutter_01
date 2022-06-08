@@ -3,10 +3,13 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_01/GetX/Getx.dart';
+import 'package:flutter_01/GetX/RX.dart';
+
 import 'package:flutter_01/Model/UserModel.dart';
 
 import 'package:flutter_01/confing/Colors.dart';
-import 'package:flutter_01/screens/Onboarding.dart';
+
 import 'package:flutter_01/screens/Setting.dart';
 import 'package:flutter_01/screens/Woman/ProfileRefreshW.dart';
 import 'package:image_picker/image_picker.dart';
@@ -44,6 +47,15 @@ class _ProfileWState extends State<ProfileW> {
     });
   }
 
+  bool _friend = false;
+
+  TextButton _button = TextButton(
+    onPressed: () {},
+    child: Text(
+      '요청중',
+      style: TextStyle(color: Colors.amber),
+    ),
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,7 +152,7 @@ class _ProfileWState extends State<ProfileW> {
             children: [
               Container(
                 margin: const EdgeInsets.only(
-                  left: 50.0,
+                  left: 40.0,
                 ),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50.0),
@@ -164,21 +176,24 @@ class _ProfileWState extends State<ProfileW> {
                 width: 70.0,
               ),
               Container(
+                // height: 50.0,
                 margin: const EdgeInsets.only(
                   left: 70.0,
                 ),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50.0),
                     color: const Color.fromARGB(255, 127, 184, 231)),
-                child: TextButton(
+                child: TextButton.icon(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Onboarding()),
-                    );
+                    setState(() {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Rx()),
+                      );
+                    });
                   },
-                  child: const Text(
+                  icon: const Icon(Icons.add),
+                  label: const Text(
                     '친구요청',
                     style: TextStyle(color: Colors.white),
                   ),
