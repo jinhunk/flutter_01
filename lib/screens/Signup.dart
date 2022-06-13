@@ -118,32 +118,34 @@ class _SignupState extends State<Signup> {
           FocusScope.of(context).unfocus();
         },
         child: SingleChildScrollView(
+          padding: EdgeInsets.only(top: 10.0),
           child: Form(
             key: _formKey2,
             child: Column(
               children: [
-                Container(
-                  padding: EdgeInsets.only(top: 40.0),
-                  alignment: Alignment.center,
-                  height: 270.0,
-                  child: ClipOval(
-                    child: Image.asset(
-                      'images/김유정.jpg',
+                ClipOval(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height / 3.0,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('images/설레는.gif'),
+                      ),
                     ),
                   ),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 30.0,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    showAlert(context);
-                  },
-                  child: Icon(
-                    Icons.image,
-                    color: Colorss.indexColor,
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () {
+                //     showAlert(context);
+                //   },
+                //   child: Icon(
+                //     Icons.image,
+                //     color: Colorss.indexColor,
+                //   ),
+                // ),
 
                 Padding(
                   padding: const EdgeInsets.all(12.0),
@@ -286,7 +288,7 @@ class _SignupState extends State<Signup> {
                 //   // successColor: Colors.blue,
                 // ),
                 SizedBox(
-                  height: 5.0,
+                  height: 30.0,
                 ),
                 Column(
                   children: [

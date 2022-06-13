@@ -30,7 +30,7 @@ class _ChatBubblesState extends State<ChatBubbles> {
   Future<void> userdata() async {
     await FirebaseFirestore.instance
         .collection("user")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .get()
         .then((value) {
       this.models = UserModel.fromMap(value.data());
@@ -123,7 +123,8 @@ class _ChatBubblesState extends State<ChatBubbles> {
           right: widget.isMe ? 5 : null,
           left: widget.isMe ? null : 5,
           child: CircleAvatar(
-            backgroundImage: NetworkImage("${models.imageURL} "),
+            backgroundImage:
+                widget.isMe ? NetworkImage("${models.imageURL} ") : null,
           ),
         ),
       ],

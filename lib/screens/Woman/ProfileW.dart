@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_01/GetX/Getx.dart';
+
 import 'package:flutter_01/GetX/RX.dart';
 
 import 'package:flutter_01/Model/UserModel.dart';
@@ -34,12 +34,12 @@ class _ProfileWState extends State<ProfileW> {
   void initState() {
     super.initState();
     userdata();
-  }
+  }//초기화 
 
   Future<void> userdata() async {
     await firebaseFirestore
         .collection("user")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .get()
         .then((value) {
       this.models = UserModel.fromMap(value.data());

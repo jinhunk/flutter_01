@@ -22,7 +22,7 @@ class _Procedure1State extends State<Procedure1> {
 
   bool valueaall = false;
 
-  bool _s0 = false;
+  // bool _s0 = false;
 
   bool icon = false;
   bool icon1 = false;

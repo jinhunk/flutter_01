@@ -68,22 +68,25 @@ class _LoginPageState extends State<LoginPage> {
           FocusScope.of(context).unfocus();
         },
         child: SingleChildScrollView(
+          padding: EdgeInsets.only(top: 10.0),
           child: Form(
             key: _formKey,
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 50.0),
-                  child: Center(
-                    child: Image.network(
-                      'https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201901/20/28017477-0365-4a43-b546-008b603da621.jpg',
-                      height: 200.0,
-                      fit: BoxFit.cover,
+                ClipOval(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height / 3.0,
+                    width: MediaQuery.of(context).size.height / 1.0,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('images/설레는.gif'),
+                      ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height / 20.0,
+                  height: MediaQuery.of(context).size.height / 25.0,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
@@ -167,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height / 9.0,
+                  height: MediaQuery.of(context).size.height / 10.0,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

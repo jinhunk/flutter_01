@@ -21,18 +21,17 @@ class Messages extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         }
-        final chatDocs = snapshot.data!.docs;
+        final chatDocs = snapshot.data?.docs;
         return Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: ListView.builder(
             reverse: true, // 채팅내용이 밑에서 부터 나오는 동작
-            itemCount: chatDocs.length,
+            itemCount: chatDocs?.length,
             itemBuilder: (context, index) {
               return ChatBubbles(
-                chatDocs[index]['text'],
-                chatDocs[index]['userID'].toString() == user!.uid,
-                chatDocs[index]['userName'].toString(),
-              );
+                  chatDocs?[index]['text'],
+                  chatDocs?[index]['userID'].toString() == user?.uid,
+                  chatDocs?[index]['userName']);
             },
           ),
         );
