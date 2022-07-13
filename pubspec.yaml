@@ -45,6 +45,7 @@ dependencies:
   introduction_screen: ^3.0.2
   provider: ^6.0.3
   get:
+  cached_network_image: ^3.2.1
   
 
   firebase_storage: ^10.2.5
@@ -84,7 +85,9 @@ flutter:
     - images/dice4.jpg
     - images/dice2.jpg
     - images/dice3.jpg
+    - images/편지이미지원본.jpg
     - images/설레는.gif
+    
     
     
     

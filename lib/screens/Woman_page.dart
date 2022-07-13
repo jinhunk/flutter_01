@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_01/confing/Colors.dart';
 import 'package:flutter_01/screens/Chat_Screen.dart';
-import 'package:flutter_01/screens/Woman/Chat.dart';
-import 'package:flutter_01/screens/Woman/FriendW.dart';
+import 'package:flutter_01/screens/Woman/StoreyW.dart';
+
 import 'package:flutter_01/screens/Woman/HomeW.dart';
 import 'package:flutter_01/screens/Woman/ProfileW.dart';
+import 'dart:math' as math;
 
 class WomanPage extends StatefulWidget {
   const WomanPage({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _WomanPageState extends State<WomanPage> {
   }
 
   int _currentIndex = 0;
-  final List<Widget> _children = [HomeW(), FriendW(), ChatScreen(), ProfileW()];
+  final List<Widget> _children = [HomeW(), StoreyW(), ChatScreen(), ProfileW()];
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
@@ -30,9 +31,9 @@ class _WomanPageState extends State<WomanPage> {
         children: _children,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.shifting,
+        type: BottomNavigationBarType.fixed,
         selectedItemColor: Colorss.indexColor,
-        unselectedItemColor: Colorss.indexColor,
+        unselectedItemColor: Colors.grey,
         // unselectedItemColor: Colors.black26,
         onTap: _onTap,
         currentIndex: _currentIndex,
@@ -43,7 +44,7 @@ class _WomanPageState extends State<WomanPage> {
               backgroundColor: Colors.white),
           new BottomNavigationBarItem(
               icon: Icon(Icons.connect_without_contact),
-              label: "친구",
+              label: "스토리",
               backgroundColor: Colors.white),
           new BottomNavigationBarItem(
               icon: const Icon(Icons.chat),

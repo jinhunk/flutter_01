@@ -5,6 +5,9 @@ import 'package:flutter_01/Model/UserModel.dart';
 import 'package:flutter_01/chatting/chat/message.dart';
 import 'package:flutter_01/chatting/chat/new_message.dart';
 import 'package:flutter_01/confing/Colors.dart';
+import 'dart:math' as math;
+
+import 'package:flutter_01/screens/jelly.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -55,24 +58,78 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colorss.indexColor,
+          backgroundColor: Colors.white,
+          elevation: 0.0,
           centerTitle: true,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("${models.name}  ",
-                  style: TextStyle(color: Colors.black54, fontSize: 14.0)),
-            ],
+          title: Text(
+            "${models.name}  ",
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 14.0,
+                fontWeight: FontWeight.bold),
+          ),
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(0.0),
+            child: Container(
+              margin: EdgeInsets.only(bottom: 6.0),
+              width: MediaQuery.of(context).size.width / 1.0,
+              height: MediaQuery.of(context).size.height / 500.0,
+              color: Color.fromARGB(255, 248, 245, 245),
+            ),
           ),
           actions: [
-            IconButton(
-              onPressed: () {
-                _auth.signOut();
-                // Navigator.pop(context);
-              },
-              icon: Icon(Icons.exit_to_app_sharp),
-            )
+            // IconButton(
+            //   onPressed: () {
+            //     _auth.signOut();
+            //     // Navigator.pop(context);
+            //   },
+            //   icon: Icon(Icons.exit_to_app_sharp),
+            // ),
+            Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Transform.rotate(
+                angle: -20 * math.pi / 180,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => (Jelly(
+                                  jellymoney: '7,500원',
+                                  jellynumber: '젤리 15개',
+                                  jellynumberfrind: '친구 요청 1회권',
+                                ))));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(right: 10.0),
+                    padding: EdgeInsets.only(top: 2.0),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color.fromARGB(255, 235, 229, 229),
+                            Colorss.indexColor,
+                          ]),
+                      color: Colors.pink,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(7.0),
+                          topRight: Radius.circular(7.0),
+                          bottomLeft: Radius.circular(11.0),
+                          bottomRight: Radius.circular(11.0)),
+                    ),
+                    width: MediaQuery.of(context).size.width / 10.0,
+                    child: Text(
+                      'Jelly',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white, fontSize: 12.0),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
         body: Container(

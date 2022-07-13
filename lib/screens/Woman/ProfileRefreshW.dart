@@ -59,15 +59,13 @@ class _ProfileRefreshWState extends State<ProfileRefreshW> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0.0,
-        iconTheme: const IconThemeData(color: Color.fromARGB(255, 82, 79, 79)),
+        iconTheme: const IconThemeData(
+          color: Color.fromARGB(255, 82, 79, 79),
+        ),
         backgroundColor: Colors.white,
-        title: Row(
-          children: const [
-            Text(
-              '프로필 수정',
-              style: TextStyle(color: Colors.black),
-            ),
-          ],
+        title: Text(
+          '프로필 수정',
+          style: TextStyle(color: Colors.black),
         ),
         actions: [
           Padding(
@@ -427,7 +425,7 @@ class _ProfileRefreshWState extends State<ProfileRefreshW> {
   }
 
   Future<void> imageget() async {
-    final refImage = FirebaseStorage.instance.ref().child("images").child('');
+    final refImage = FirebaseStorage.instance.ref().child("images");
     await refImage.putFile(singleImage!);
     final url = await refImage.getDownloadURL();
 
