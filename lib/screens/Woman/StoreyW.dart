@@ -92,7 +92,7 @@ class _FinState extends State<StoreyW> with TickerProviderStateMixin {
               height: MediaQuery.of(context).size.height / 19.6,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(13),
-                color: Color.fromARGB(255, 16, 89, 148),
+                color: Color.fromARGB(255, 55, 78, 207),
               ),
               child: Padding(
                 padding:

@@ -12,6 +12,10 @@ import 'package:flutter_01/confing/Colors.dart';
 
 import 'package:flutter_01/screens/Setting.dart';
 import 'package:flutter_01/screens/Woman/ProfileRefreshW.dart';
+import 'package:flutter_01/screens/animal.dart';
+import 'package:flutter_01/screens/profilecertification.dart';
+import 'package:flutter_01/screens/profiletop.dart';
+import 'package:flutter_01/screens/voice.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileW extends StatefulWidget {
@@ -48,50 +52,58 @@ class _ProfileWState extends State<ProfileW> {
   }
 
   Widget _bodyheader() {
-    return Container(
-      margin: EdgeInsets.only(left: 3.0),
-      width: MediaQuery.of(context).size.width / 1.1,
-      height: MediaQuery.of(context).size.height / 13.5,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: Color.fromARGB(255, 222, 237, 250)),
-      child: Stack(
-        children: [
-          Positioned(
-            left: 20.0,
-            top: 15.0,
-            child: Image.asset(
-              'images/편지이미지원본.jpg',
-              height: 30.0,
-              width: 25.0,
+    return GestureDetector(
+      child: Container(
+        margin: EdgeInsets.only(left: 3.0),
+        width: MediaQuery.of(context).size.width / 1.1,
+        height: MediaQuery.of(context).size.height / 13.5,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            color: Color.fromARGB(255, 222, 237, 250)),
+        child: Stack(
+          children: [
+            Positioned(
+              left: 20.0,
+              top: 15.0,
+              child: Image.asset(
+                'images/편지이미지원본.jpg',
+                height: 30.0,
+                width: 25.0,
+              ),
             ),
-          ),
-          Positioned(
-            left: 60,
-            right: 23,
-            top: 12,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  '사연 보내기',
-                  style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  '위피에서 친구 & 커플 된 사연 보내고 선물 받기!',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.normal),
-                ),
-              ],
+            Positioned(
+              left: 60,
+              right: 23,
+              top: 12,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    '사연 보내기',
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '위피에서 친구 & 커플 된 사연 보내고 선물 받기!',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.normal),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const profiletop()),
+        );
+      },
     );
   }
 
@@ -115,14 +127,22 @@ class _ProfileWState extends State<ProfileW> {
           padding: EdgeInsets.only(right: 40.0, top: 70.0),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Icon(Icons.mic),
-                  SizedBox(
-                    width: 5.0,
-                  ),
-                  Text('목소리 등록'),
-                ],
+              GestureDetector(
+                child: Row(
+                  children: [
+                    Icon(Icons.mic),
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    Text('목소리 등록'),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Voice()),
+                  );
+                },
               ),
               SizedBox(
                 height: 5.0,
@@ -140,14 +160,22 @@ class _ProfileWState extends State<ProfileW> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 13.0),
-                child: Row(
-                  children: [
-                    Icon(Icons.pets),
-                    SizedBox(
-                      width: 5.0,
-                    ),
-                    Text('반려동물 등록'),
-                  ],
+                child: GestureDetector(
+                  child: Row(
+                    children: [
+                      Icon(Icons.pets),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      Text('반려동물 등록'),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Animal()),
+                    );
+                  },
                 ),
               ),
               SizedBox(
@@ -164,14 +192,22 @@ class _ProfileWState extends State<ProfileW> {
               SizedBox(
                 height: 10.0,
               ),
-              Row(
-                children: [
-                  Icon(Icons.check_circle),
-                  SizedBox(
-                    width: 5.0,
-                  ),
-                  Text('프로필 인증'),
-                ],
+              GestureDetector(
+                child: Row(
+                  children: [
+                    Icon(Icons.check_circle),
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    Text('프로필 인증'),
+                  ],
+                ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const profilecertification()));
+                },
               ),
             ],
           ),

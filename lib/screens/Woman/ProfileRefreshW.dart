@@ -362,7 +362,7 @@ class _ProfileRefreshWState extends State<ProfileRefreshW> {
                 ],
               ),
               const SizedBox(
-                height: 20.0,
+                height: 10.0,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -393,6 +393,139 @@ class _ProfileRefreshWState extends State<ProfileRefreshW> {
                             ),
                             child: Text(
                               '${models.name}',
+                              style: const TextStyle(
+                                color: Colors.pink,
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(
+                          color: const Color.fromARGB(255, 226, 222, 222)),
+                    ),
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    height: MediaQuery.of(context).size.height / 20.0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(left: 10.0),
+                          child: Text(
+                            '거주지',
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 16.0),
+                          ),
+                        ),
+                        if (models.name != null) ...[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              right: 10.0,
+                            ),
+                            child: Text(
+                              '${models.address}',
+                              style: const TextStyle(
+                                  color: Colors.pink,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(
+                          color: const Color.fromARGB(255, 226, 222, 222)),
+                    ),
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    height: MediaQuery.of(context).size.height / 20.0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(left: 10.0),
+                          child: Text(
+                            '종교',
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 16.0),
+                          ),
+                        ),
+                        if (models.name != null) ...[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              right: 10.0,
+                            ),
+                            child: Text(
+                              '${models.religion}',
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(
+                          color: const Color.fromARGB(255, 226, 222, 222)),
+                    ),
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    height: MediaQuery.of(context).size.height / 20.0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(left: 10.0),
+                          child: Text(
+                            '흡연여부',
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 16.0),
+                          ),
+                        ),
+                        if (models.name != null) ...[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              right: 10.0,
+                            ),
+                            child: Text(
+                              '${models.smoking}',
                               style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16.0,

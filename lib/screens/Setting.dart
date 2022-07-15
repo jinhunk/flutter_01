@@ -1,11 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_01/confing/Colors.dart';
-import 'package:flutter_01/screens/LoginPage.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
-// import 'package:geocoding/geocoding.dart';
-// import 'package:geolocator/geolocator.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -15,62 +8,215 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  var _latitude = '';
-  var _longitude = '';
-  var _altitude = '';
-  var _speed = '';
-  var _address = '경기도 구리시';
+  bool _switch = true;
+  bool _switch2 = true;
 
-  Future<void> _updatePosition() async {
-    Position pos = await _determinePosition();
-    List pm = await placemarkFromCoordinates(pos.latitude, pos.longitude);
-    setState(() {
-      _latitude = pos.latitude.toString();
-      _longitude = pos.longitude.toString();
-      _altitude = pos.altitude.toString();
-      _speed = pos.speed.toString();
-      _address = pm[0].toString();
-    });
+  Widget bodytopbutton() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 3.0, top: 20.0),
+      child: Container(
+        width: MediaQuery.of(context).size.width / 1.1,
+        height: MediaQuery.of(context).size.height / 13.0,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Color.fromARGB(255, 43, 147, 231),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Icon(
+              Icons.check_circle,
+              color: Colors.white,
+            ),
+            Text(
+              '아는 사람 만나지 않기',
+              style: TextStyle(color: Colors.white, fontSize: 20.0),
+            ),
+            SizedBox(
+              width: 40.0,
+            ),
+            Icon(
+              Icons.chevron_right,
+              color: Colors.white,
+              size: 35.0,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
-  Future<Position> _determinePosition() async {
-    bool serviceEnabled; //서비스가능
-    LocationPermission permission; //허가
-    //위치 서비스가 활성화되었는지 테스트합니다.
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      // 위치 서비스가 활성화되지 않음 계속하지 않음
-      // 위치에 액세스하고 사용자를 요청합니다.
-      // 위치 서비스를 활성화하는 앱.
-      return Future.error('위치 서비스가 비활성화되었습니다.');
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        // 권한이 거부되었습니다. 다음에 시도할 수 있습니다.
-        // 권한을 다시 요청합니다(여기도
-        // 안드로이드의 shouldShowRequestPermissionRationale
-        // true를 반환했습니다. 안드로이드 가이드라인에 따르면
-        // 이제 앱에 설명 UI가 표시되어야 합니다.
-        return Future.error('위치 권한이 거부되었습니다.');
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      // 권한은 영원히 거부됩니다. 적절하게 처리하십시오.
-      return Future.error('위치 권한이 영구적으로 거부되었습니다. 권한을 요청할 수 없습니다..');
-    }
-
-    // 여기에 도달하면 권한이 부여되고
-    // 장치의 위치에 계속 액세스합니다.
-    return await Geolocator.getCurrentPosition();
+  Widget line() {
+    return Container(
+      margin: EdgeInsets.only(top: 15.0),
+      width: MediaQuery.of(context).size.width / 1.0,
+      height: MediaQuery.of(context).size.height / 500.0,
+      color: Color.fromARGB(255, 248, 245, 245),
+    );
   }
 
-  @override
-  void initState() {
-    super.initState();
+  Widget bodymiddle1() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15.0, left: 20.0),
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '지역',
+                style: TextStyle(color: Colors.grey, fontSize: 15.0),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                children: [
+                  Text(
+                    '활동 지역',
+                    style: TextStyle(color: Colors.black, fontSize: 20.0),
+                  ),
+                  SizedBox(
+                    width: 120.0,
+                  ),
+                  Text(
+                    '경기도 구리시',
+                    style: TextStyle(color: Colors.pink, fontSize: 20.0),
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
+                  Icon(
+                    Icons.location_searching,
+                    color: Colors.pink,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget bodymiddle2() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15.0, left: 20.0),
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '알림',
+                style: TextStyle(color: Colors.grey, fontSize: 15.0),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                children: [
+                  Text(
+                    '매칭 알림',
+                    style: TextStyle(color: Colors.black, fontSize: 20.0),
+                  ),
+                  SizedBox(
+                    width: 220.0,
+                  ),
+                  Container(
+                    child: Switch(
+                      value: _switch,
+                      onChanged: (chack) {
+                        setState(() {
+                          _switch = chack;
+                        });
+                      },
+                      activeColor: Colors.pink,
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                '새로운 친구 소개, 괜찮아요 알림을 받을 수 있습니다.',
+                style: TextStyle(color: Colors.black54, fontSize: 14.0),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                children: [
+                  Text(
+                    '채팅 알림',
+                    style: TextStyle(color: Colors.black, fontSize: 20.0),
+                  ),
+                  SizedBox(
+                    width: 220.0,
+                  ),
+                  Switch(
+                    value: _switch2,
+                    onChanged: (chack) {
+                      setState(() {
+                        _switch2 = chack;
+                      });
+                    },
+                    activeColor: Colors.pink,
+                  ),
+                ],
+              ),
+              Text(
+                '친구요청, 채팅 메세지 알림을 받을 수 있습니다.',
+                style: TextStyle(color: Colors.black54, fontSize: 14.0),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget bodymiddle3(String title, String description) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15.0, left: 20.0),
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(color: Colors.grey, fontSize: 15.0),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Text(
+                description,
+                style: TextStyle(color: Colors.black, fontSize: 20.0),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget bodymiddle4(String description) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15.0, left: 20.0),
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                description,
+                style: TextStyle(color: Colors.black, fontSize: 20.0),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -78,274 +224,133 @@ class _SettingPageState extends State<SettingPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colorss.indexColor,
+        backgroundColor: Colors.white,
         elevation: 0.0,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: IconButton(
-                onPressed: () {
-                  setState(() {
-                    Navigator.pop(context);
-                  });
-                },
-                icon: Icon(Icons.settings),
-                color: Colors.white),
+        iconTheme: IconThemeData(),
+        title: Text(
+          '설정',
+          style: TextStyle(color: Colors.black),
+        ),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(0.0),
+          child: Container(
+            margin: EdgeInsets.only(bottom: 6.0),
+            width: MediaQuery.of(context).size.width / 1.0,
+            height: MediaQuery.of(context).size.height / 500.0,
+            color: Color.fromARGB(255, 248, 245, 245),
           ),
-        ],
+        ),
       ),
-      body: ListView(
-        children: [
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    width: MediaQuery.of(context).size.width / 1.1,
-                    height: MediaQuery.of(context).size.height / 9.0,
-                    padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor: Colors.blueAccent,
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        '아는 사람 만나지 않기',
-                        style: TextStyle(color: Colors.white, fontSize: 20.0),
-                      ),
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                color: Colors.grey,
-                height: MediaQuery.of(context).size.height / 500.0,
-                width: MediaQuery.of(context).size.width / 1.0,
-              ),
-              ElevatedButton(
-                child: Row(children: [
-                  Icon(
-                    Icons.lock_open,
-                    color: Colorss.indexColor,
-                  ),
-                  Padding(
-                      padding: EdgeInsets.only(left: 10.0),
-                      child: Text(
-                        "로그아웃",
-                        style: TextStyle(fontSize: 14.0, color: Colors.black),
-                      ))
-                ]),
-                onPressed: () {
-                  setState(() {
-                    alertLogOut(context);
-                  });
-                },
-                style: ButtonStyle(
-                  elevation: MaterialStateProperty.all(0.0),
-                  backgroundColor: MaterialStateProperty.all(Colors.white),
-                  // overlayColor: MaterialStateProperty.all(Colors.grey[300]),
-                ),
-              ),
-              Container(
-                color: Colors.grey,
-                height: MediaQuery.of(context).size.height / 500.0,
-                width: MediaQuery.of(context).size.width / 1.0,
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0, left: 15.0),
-                    child: Text(
-                      '지역',
-                      style: TextStyle(
-                        color: Colors.grey,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              ListTile(
-                onTap: () {},
-                title: Text('활동지역'),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextButton.icon(
-                      onPressed: () {
-                        _determinePosition();
-                      },
-                      icon: Icon(
-                        Icons.location_on,
-                        size: 30.0,
-                        color: Colorss.indexColor,
-                      ),
-                      label: Text(
-                        _address,
-                        style: TextStyle(
-                            color: Colorss.indexColor, fontSize: 17.0),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 60.0,
-              ),
-              Container(
-                color: Colors.grey,
-                height: MediaQuery.of(context).size.height / 500.0,
-                width: MediaQuery.of(context).size.width / 1.0,
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0, left: 15.0),
-                    child: Text(
-                      '약관',
-                      style: TextStyle(
-                        color: Colors.grey,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0, left: 7.0),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        '서비스 이용 약관',
-                        style: TextStyle(color: Colors.black, fontSize: 18.0),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0, left: 7.0),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text('개인정보 보호 약관',
-                          style:
-                              TextStyle(color: Colors.black, fontSize: 18.0)),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 8.0,
-                      left: 7.0,
-                    ),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text('위치정보 이용약관',
-                          style:
-                              TextStyle(color: Colors.black, fontSize: 18.0)),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0, left: 7.0),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text('사업자 정보',
-                          style:
-                              TextStyle(color: Colors.black, fontSize: 18.0)),
-                      style: ButtonStyle(
-                          elevation: MaterialStateProperty.all(0.0)),
-                    ),
-                  )
-                ],
-              ),
-              Container(
-                color: Colors.grey,
-                height: MediaQuery.of(context).size.height / 500.0,
-                width: MediaQuery.of(context).size.width / 1.0,
-              ),
-            ],
-          )
-        ],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            bodytopbutton(),
+            line(),
+            bodymiddle1(),
+            line(),
+            bodymiddle2(),
+            line(),
+            bodymiddle3('지원', '고객 문의'),
+            SizedBox(
+              height: 10.0,
+            ),
+            bodymiddle4('커뮤니티 가이드라인'),
+            line(),
+            bodymiddle3('약관', '서비스 이용약관'),
+            SizedBox(
+              height: 10.0,
+            ),
+            bodymiddle4('개인정보 보호약관'),
+            SizedBox(
+              height: 10.0,
+            ),
+            bodymiddle4('위치정보 이용약관'),
+            SizedBox(
+              height: 10.0,
+            ),
+            bodymiddle4('라이센스'),
+            SizedBox(
+              height: 10.0,
+            ),
+            bodymiddle4('사업자 정보'),
+            SizedBox(
+              height: 10.0,
+            ),
+            line(),
+            bodymiddle3('계정', '계정 관리'),
+            SizedBox(
+              height: 10.0,
+            ),
+            bodymiddle4('계정 보호 가이드라인'),
+          ],
+        ),
       ),
     );
   }
-
-  void _logout() async {
-    await FirebaseAuth.instance.signOut();
-  }
-
-  void alertLogOut(BuildContext context) async {
-    showDialog(
-        context: context,
-        barrierDismissible: true, // 바탕화면 누르면 안내창 사라짐
-        builder: (BuildContext context) {
-          return AlertDialog(
-              title: Text(
-                "로그아웃 하시겠습니까?",
-                style: TextStyle(fontSize: 15.0),
-              ),
-              actions: <Widget>[
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                          width: MediaQuery.of(context).size.width / 5,
-                          height: MediaQuery.of(context).size.height / 18,
-                          child: TextButton(
-                              child: Text(
-                                "네",
-                                style: TextStyle(
-                                    color: Colorss.indexColor,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  _logout();
-                                  Navigator.pop(context);
-                                  _snackBarLogout(); // 스낵바 추가 & 페이지 이동
-                                });
-                              })),
-                      Container(
-                          width: MediaQuery.of(context).size.width / 4,
-                          height: MediaQuery.of(context).size.height / 18,
-                          child: TextButton(
-                              child: Text(
-                                "아니요",
-                                style: TextStyle(
-                                    color: Colors.blue,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              })),
-                    ]),
-              ]);
-        });
-  }
-
-  void _snackBarLogout() {
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        backgroundColor: Colorss.indexColor,
-        content: Text('로그아웃이 되었습니다',
-            style: TextStyle(color: Colors.white, fontSize: 15.0))));
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => LoginPage()));
-  }
 }
+
+//   void _logout() async {
+//     await FirebaseAuth.instance.signOut();
+//   }
+
+//   void alertLogOut(BuildContext context) async {
+//     showDialog(
+//         context: context,
+//         barrierDismissible: true, // 바탕화면 누르면 안내창 사라짐
+//         builder: (BuildContext context) {
+//           return AlertDialog(
+//               title: Text(
+//                 "로그아웃 하시겠습니까?",
+//                 style: TextStyle(fontSize: 15.0),
+//               ),
+//               actions: <Widget>[
+//                 Row(
+//                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                     children: [
+//                       Container(
+//                           width: MediaQuery.of(context).size.width / 5,
+//                           height: MediaQuery.of(context).size.height / 18,
+//                           child: TextButton(
+//                               child: Text(
+//                                 "네",
+//                                 style: TextStyle(
+//                                     color: Colorss.indexColor,
+//                                     fontSize: 14,
+//                                     fontWeight: FontWeight.bold),
+//                               ),
+//                               onPressed: () {
+//                                 setState(() {
+//                                   _logout();
+//                                   Navigator.pop(context);
+//                                   _snackBarLogout(); // 스낵바 추가 & 페이지 이동
+//                                 });
+//                               })),
+//                       Container(
+//                           width: MediaQuery.of(context).size.width / 4,
+//                           height: MediaQuery.of(context).size.height / 18,
+//                           child: TextButton(
+//                               child: Text(
+//                                 "아니요",
+//                                 style: TextStyle(
+//                                     color: Colors.blue,
+//                                     fontSize: 14,
+//                                     fontWeight: FontWeight.bold),
+//                               ),
+//                               onPressed: () {
+//                                 Navigator.pop(context);
+//                               })),
+//                     ]),
+//               ]);
+//         });
+//   }
+
+//   void _snackBarLogout() {
+//     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+//         backgroundColor: Colorss.indexColor,
+//         content: Text('로그아웃이 되었습니다',
+//             style: TextStyle(color: Colors.white, fontSize: 15.0))));
+//     Navigator.push(
+//         context, MaterialPageRoute(builder: (context) => LoginPage()));
+//   }
+// }

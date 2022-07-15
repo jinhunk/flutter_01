@@ -31,6 +31,7 @@ class _WomanPageState extends State<WomanPage> {
         children: _children,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colorss.indexColor,
         unselectedItemColor: Colors.grey,
