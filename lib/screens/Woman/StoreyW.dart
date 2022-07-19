@@ -6,6 +6,7 @@ import 'package:flutter_01/confing/Colors.dart';
 import 'dart:math' as math;
 
 import 'package:flutter_01/screens/jelly.dart';
+import 'package:flutter_01/screens/storey2.dart';
 
 class StoreyW extends StatefulWidget {
   const StoreyW({Key? key}) : super(key: key);
@@ -87,32 +88,38 @@ class _FinState extends State<StoreyW> with TickerProviderStateMixin {
             SizedBox(
               height: 15.0,
             ),
-            Container(
-              width: MediaQuery.of(context).size.width / 1.6,
-              height: MediaQuery.of(context).size.height / 19.6,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(13),
-                color: Color.fromARGB(255, 55, 78, 207),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 12, horizontal: 58.0),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.border_color,
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      width: 3.0,
-                    ),
-                    Text(
-                      '스토리 작성하기',
-                      style: TextStyle(fontSize: 15.0, color: Colors.white),
-                    )
-                  ],
+            GestureDetector(
+              child: Container(
+                width: MediaQuery.of(context).size.width / 1.6,
+                height: MediaQuery.of(context).size.height / 19.6,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(13),
+                  color: Color.fromARGB(255, 55, 78, 207),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 12, horizontal: 58.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.border_color,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 3.0,
+                      ),
+                      Text(
+                        '스토리 작성하기',
+                        style: TextStyle(fontSize: 15.0, color: Colors.white),
+                      )
+                    ],
+                  ),
                 ),
               ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => (Storey2())));
+              },
             ),
           ],
         ),
@@ -207,14 +214,8 @@ class _FinState extends State<StoreyW> with TickerProviderStateMixin {
               angle: -20 * math.pi / 180,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => (Jelly(
-                                jellymoney: '7,500원',
-                                jellynumber: '젤리 15개',
-                                jellynumberfrind: '친구 요청 1회권',
-                              ))));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => (Jelly())));
                 },
                 child: Container(
                   margin: EdgeInsets.only(right: 10.0),

@@ -8,8 +8,8 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  bool _switch = true;
-  bool _switch2 = true;
+  bool _switch = false;
+  bool _switch2 = false;
 
   Widget bodytopbutton() {
     return Padding(

@@ -379,14 +379,8 @@ class _HomeWState extends State<HomeW> with TickerProviderStateMixin {
               angle: -20 * math.pi / 180,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => (Jelly(
-                                jellymoney: '7,500원',
-                                jellynumber: '젤리 15개',
-                                jellynumberfrind: '친구 요청 1회권',
-                              ))));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => (Jelly())));
                 },
                 child: Container(
                   margin: EdgeInsets.only(right: 10.0),

@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_01/confing/Colors.dart';
 import 'dart:math' as math;
 
-class Jelly extends StatelessWidget {
-  final String jellynumber;
-  final String jellynumberfrind;
-  final String jellymoney;
+class Jelly extends StatefulWidget {
+  Jelly({
+    Key? key,
+  }) : super(key: key);
 
-  Jelly(
-      {Key? key,
-      required this.jellymoney,
-      required this.jellynumber,
-      required this.jellynumberfrind})
-      : super(key: key);
+  @override
+  State<Jelly> createState() => _JellyState();
+}
 
+class _JellyState extends State<Jelly> {
   Widget header(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width / 1.0,
@@ -82,12 +80,13 @@ class Jelly extends StatelessWidget {
     );
   }
 
-  Widget bodydescription(BuildContext context, String title) {
+  Widget bodydescription(BuildContext context, String title, String description,
+      String description2, String number) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18.0),
       child: Container(
         width: MediaQuery.of(context).size.width / 1.11,
-        height: MediaQuery.of(context).size.height / 8.5,
+        height: MediaQuery.of(context).size.height / 9.5,
         decoration: BoxDecoration(
           border: Border.all(color: Color.fromARGB(255, 204, 201, 201)),
           borderRadius: BorderRadius.circular(15),
@@ -130,7 +129,7 @@ class Jelly extends StatelessWidget {
               left: 53.0,
               top: 15.0,
               child: Text(
-                jellynumber,
+                title,
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
               ),
             ),
@@ -142,14 +141,22 @@ class Jelly extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5),
                   color: Color.fromARGB(255, 236, 235, 235),
                 ),
-                width: MediaQuery.of(context).size.width / 4.0,
+                width: MediaQuery.of(context).size.width / 3.8,
                 height: MediaQuery.of(context).size.height / 40.5,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 3.0, left: 15.0),
+                  padding: const EdgeInsets.only(top: 3.0, left: 5.0),
                   child: Row(
                     children: [
+                      Icon(
+                        Icons.handshake,
+                        size: 17.0,
+                        color: Colors.amber,
+                      ),
+                      SizedBox(
+                        width: 2.0,
+                      ),
                       Text(
-                        jellynumberfrind,
+                        description2,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 12.0,
@@ -162,10 +169,10 @@ class Jelly extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: 260.0,
-              top: 35.0,
+              left: 250.0,
+              top: 25.0,
               child: Text(
-                jellymoney,
+                number,
                 style: TextStyle(
                     color: Color.fromARGB(255, 129, 126, 126),
                     fontSize: 20.0,
@@ -178,20 +185,22 @@ class Jelly extends StatelessWidget {
     );
   }
 
-  Widget bodyend(BuildContext context) {
+  Widget bodydescription1and1(BuildContext context, String title,
+      String description, String description2, String number) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 17.0),
+      padding: const EdgeInsets.symmetric(horizontal: 18.0),
       child: Container(
         width: MediaQuery.of(context).size.width / 1.11,
-        height: MediaQuery.of(context).size.height / 13.5,
+        height: MediaQuery.of(context).size.height / 9.5,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(7),
-            color: Color.fromARGB(255, 235, 177, 196)),
+          border: Border.all(color: Color.fromARGB(255, 204, 201, 201)),
+          borderRadius: BorderRadius.circular(15),
+        ),
         child: Stack(
           children: [
             Positioned(
               top: 20.0,
-              left: 90.0,
+              left: 13.0,
               child: Transform.rotate(
                 angle: -20 * math.pi / 180,
                 child: Container(
@@ -212,28 +221,451 @@ class Jelly extends StatelessWidget {
                         bottomLeft: Radius.circular(11.0),
                         bottomRight: Radius.circular(11.0)),
                   ),
-                  width: MediaQuery.of(context).size.width / 17.0,
+                  width: MediaQuery.of(context).size.width / 12.0,
                   child: Text(
-                    '',
+                    'Jelly',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white, fontSize: 10.0),
+                    style: TextStyle(color: Colors.white, fontSize: 12.0),
                   ),
                 ),
               ),
             ),
             Positioned(
-              top: 18.0,
-              left: 120.0,
+              left: 53.0,
+              top: 15.0,
               child: Text(
-                '무료 젤리 받는 방법',
+                title,
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Positioned(
+              left: 14.0,
+              top: 50.0,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Color.fromARGB(255, 236, 235, 235),
+                ),
+                width: MediaQuery.of(context).size.width / 3.4,
+                height: MediaQuery.of(context).size.height / 40.5,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 3.0, left: 5.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.person_outline,
+                        color: Colors.amber,
+                        size: 17,
+                      ),
+                      SizedBox(
+                        width: 2.0,
+                      ),
+                      Text(
+                        description,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 140.0,
+              top: 50.0,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Color.fromARGB(255, 236, 235, 235),
+                ),
+                width: MediaQuery.of(context).size.width / 3.8,
+                height: MediaQuery.of(context).size.height / 40.5,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 3.0, left: 5.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.handshake,
+                        size: 17.0,
+                        color: Colors.amber,
+                      ),
+                      SizedBox(
+                        width: 2.0,
+                      ),
+                      Text(
+                        description2,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 250.0,
+              top: 25.0,
+              child: Text(
+                number,
                 style: TextStyle(
-                    color: Colors.pink,
-                    fontSize: 18.0,
+                    color: Color.fromARGB(255, 129, 126, 126),
+                    fontSize: 20.0,
                     fontWeight: FontWeight.bold),
               ),
-            )
+            ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget bodydescription2(BuildContext context, String title,
+      String description, String description2, String number) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+      child: Container(
+        width: MediaQuery.of(context).size.width / 1.11,
+        height: MediaQuery.of(context).size.height / 9.5,
+        decoration: BoxDecoration(
+          border: Border.all(color: Color.fromARGB(255, 204, 201, 201)),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 20.0,
+              left: 13.0,
+              child: Transform.rotate(
+                angle: -20 * math.pi / 180,
+                child: Container(
+                  margin: EdgeInsets.only(right: 10.0),
+                  padding: EdgeInsets.only(top: 2.0),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color.fromARGB(255, 235, 229, 229),
+                          Colorss.indexColor,
+                        ]),
+                    color: Colors.pink,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(7.0),
+                        topRight: Radius.circular(7.0),
+                        bottomLeft: Radius.circular(11.0),
+                        bottomRight: Radius.circular(11.0)),
+                  ),
+                  width: MediaQuery.of(context).size.width / 12.0,
+                  child: Text(
+                    'Jelly',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 12.0),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 53.0,
+              top: 15.0,
+              child: Text(
+                title,
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Positioned(
+              left: 14.0,
+              top: 50.0,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Color.fromARGB(255, 236, 235, 235),
+                ),
+                width: MediaQuery.of(context).size.width / 3.2,
+                height: MediaQuery.of(context).size.height / 40.5,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 3.0, left: 5.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.person_outline,
+                        color: Colors.amber,
+                        size: 17,
+                      ),
+                      SizedBox(
+                        width: 2.0,
+                      ),
+                      Text(
+                        description,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 140.0,
+              top: 50.0,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Color.fromARGB(255, 236, 235, 235),
+                ),
+                width: MediaQuery.of(context).size.width / 3.7,
+                height: MediaQuery.of(context).size.height / 40.5,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 3.0, left: 5.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.handshake,
+                        size: 17.0,
+                        color: Colors.amber,
+                      ),
+                      SizedBox(
+                        width: 2.0,
+                      ),
+                      Text(
+                        description2,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 250.0,
+              top: 25.0,
+              child: Text(
+                number,
+                style: TextStyle(
+                    color: Color.fromARGB(255, 129, 126, 126),
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget bodydescription3(BuildContext context, String title,
+      String description, String description2, String number) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+      child: Container(
+        width: MediaQuery.of(context).size.width / 1.11,
+        height: MediaQuery.of(context).size.height / 9.5,
+        decoration: BoxDecoration(
+          border: Border.all(color: Color.fromARGB(255, 204, 201, 201)),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 20.0,
+              left: 13.0,
+              child: Transform.rotate(
+                angle: -20 * math.pi / 180,
+                child: Container(
+                  margin: EdgeInsets.only(right: 10.0),
+                  padding: EdgeInsets.only(top: 2.0),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color.fromARGB(255, 235, 229, 229),
+                          Colorss.indexColor,
+                        ]),
+                    color: Colors.pink,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(7.0),
+                        topRight: Radius.circular(7.0),
+                        bottomLeft: Radius.circular(11.0),
+                        bottomRight: Radius.circular(11.0)),
+                  ),
+                  width: MediaQuery.of(context).size.width / 12.0,
+                  child: Text(
+                    'Jelly',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 12.0),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 53.0,
+              top: 15.0,
+              child: Text(
+                title,
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Positioned(
+              left: 14.0,
+              top: 50.0,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Color.fromARGB(255, 241, 240, 240),
+                ),
+                width: MediaQuery.of(context).size.width / 3.2,
+                height: MediaQuery.of(context).size.height / 40.5,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 3.0, left: 5.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.person_outline,
+                        color: Colors.amber,
+                        size: 17,
+                      ),
+                      SizedBox(
+                        width: 2.0,
+                      ),
+                      Text(
+                        description,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 140.0,
+              top: 50.0,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Color.fromARGB(255, 236, 235, 235),
+                ),
+                width: MediaQuery.of(context).size.width / 3.7,
+                height: MediaQuery.of(context).size.height / 40.5,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 3.0, left: 5.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.handshake,
+                        color: Colors.amber,
+                        size: 17,
+                      ),
+                      SizedBox(
+                        width: 2.0,
+                      ),
+                      Text(
+                        description2,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 240.0,
+              top: 25.0,
+              child: Text(
+                number,
+                style: TextStyle(
+                    color: Color.fromARGB(255, 129, 126, 126),
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget bodyend(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 17.0),
+      child: GestureDetector(
+        child: Container(
+          width: MediaQuery.of(context).size.width / 1.11,
+          height: MediaQuery.of(context).size.height / 18.0,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(7),
+              color: Color.fromARGB(255, 245, 219, 228)),
+          child: Stack(
+            children: [
+              Positioned(
+                top: 15.0,
+                left: 90.0,
+                child: Transform.rotate(
+                  angle: -20 * math.pi / 180,
+                  child: Container(
+                    margin: EdgeInsets.only(right: 10.0),
+                    padding: EdgeInsets.only(top: 2.0),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color.fromARGB(255, 235, 229, 229),
+                            Colorss.indexColor,
+                          ]),
+                      color: Colors.pink,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(7.0),
+                          topRight: Radius.circular(7.0),
+                          bottomLeft: Radius.circular(11.0),
+                          bottomRight: Radius.circular(11.0)),
+                    ),
+                    width: MediaQuery.of(context).size.width / 17.0,
+                    child: Text(
+                      '',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white, fontSize: 10.0),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 12.0,
+                left: 120.0,
+                child: Text(
+                  '무료 젤리 받는 방법',
+                  style: TextStyle(
+                      color: Colors.pink,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
+          ),
+        ),
+        onTap: () {
+          _bodybottombuttonalert(context);
+        },
       ),
     );
   }
@@ -283,34 +715,66 @@ class Jelly extends StatelessWidget {
             bodyheader(),
             bodydescription(
               context,
-              '',
+              '젤리 15개',
+              '프로필 보기 1회권',
+              '친구 요청 1회권',
+              '  7,500원',
             ),
             SizedBox(
               height: 7.0,
             ),
-            bodydescription(context, ''),
+            bodydescription1and1(
+              context,
+              '젤리 30개',
+              '프로필 보기 1회권',
+              '친구 요청 1회권',
+              '11,000원',
+            ),
             SizedBox(
               height: 7.0,
             ),
-            bodydescription(context, ''),
+            bodydescription1and1(
+              context,
+              '젤리 60개',
+              '프로필 보기 1회권',
+              '친구 요청 2회권',
+              '17,000원',
+            ),
             SizedBox(
               height: 7.0,
             ),
-            bodydescription(context, ''),
+            bodydescription2(
+              context,
+              '젤리 130개',
+              '프로필 보기 2회권',
+              '친구 요청 3회권',
+              '31,000원',
+            ),
             SizedBox(
               height: 7.0,
             ),
-            bodydescription(context, ''),
+            bodydescription2(
+              context,
+              '젤리 400개',
+              '프로필 보기 10회권',
+              '친구 요청 5회권',
+              '89,000원',
+            ),
             SizedBox(
               height: 7.0,
             ),
-            bodydescription(context, ''),
+            bodydescription3(
+              context,
+              '젤리 800개',
+              '프로필 보기 12회권',
+              '친구 요청 1회권',
+              '169,000원',
+            ),
             SizedBox(
               height: 7.0,
             ),
-            bodydescription(context, ''),
             SizedBox(
-              height: 15.0,
+              height: 10.0,
             ),
             bodyend(context),
           ],
@@ -318,4 +782,93 @@ class Jelly extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> _bodybottombuttonalert(BuildContext context) async {
+  return showDialog<void>(
+    //다이얼로그 위젯 소환
+    context: context,
+    barrierDismissible: false, // 다이얼로그 이외의 바탕 눌러도 안꺼지도록 설정
+    builder: (BuildContext context) {
+      return Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            title: Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Column(
+                children: [
+                  Text(
+                    '무료 젤리 받는 방법',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Icon(Icons.person, color: Colors.amber, size: 100.0)
+                ],
+              ),
+            ),
+            content: Column(
+              children: [
+                Text(
+                  '위픽 메뉴에서 40명을 소개받을 때마다',
+                  style: TextStyle(color: Colors.black),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '젤리 1개',
+                      style: TextStyle(color: Colors.pink),
+                    ),
+                    Text(
+                      '받을 수 있습니다.',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            actions: [
+              Padding(
+                padding: EdgeInsets.only(bottom: 3.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 1.4,
+                        height: MediaQuery.of(context).size.height / 18.0,
+                        decoration: BoxDecoration(
+                          color: Colors.pink,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 12.0),
+                          child: Text(
+                            '확인',
+                            textAlign: TextAlign.center,
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 18.0),
+                          ),
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      );
+    },
+  );
 }

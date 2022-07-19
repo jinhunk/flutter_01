@@ -395,20 +395,25 @@ class _ProfileWState extends State<ProfileW> {
   Widget _bodybottombutton() {
     return Column(
       children: [
-        Container(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
-            width: MediaQuery.of(context).size.width / 1.1,
-            height: MediaQuery.of(context).size.height / 18.0,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), color: Colors.pink),
-            child: Text(
-              '내 프로필 평가받기',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20.0,
-                color: Colors.white,
-              ),
-            )),
+        GestureDetector(
+          child: Container(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+              width: MediaQuery.of(context).size.width / 1.1,
+              height: MediaQuery.of(context).size.height / 18.0,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10), color: Colors.pink),
+              child: Text(
+                '내 프로필 평가받기',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.white,
+                ),
+              )),
+          onTap: () {
+            _bodybottombuttonalert(context);
+          },
+        ),
       ],
     );
   }
@@ -467,4 +472,117 @@ class _ProfileWState extends State<ProfileW> {
       }
     });
   }
+}
+
+Future<void> _bodybottombuttonalert(BuildContext context) async {
+  return showDialog<void>(
+    //다이얼로그 위젯 소환
+    context: context,
+    barrierDismissible: false, // 다이얼로그 이외의 바탕 눌러도 안꺼지도록 설정
+    builder: (BuildContext context) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            title: Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Column(
+                children: [
+                  Text(
+                    '프로필 평가를 시작할까요?',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 3.0,
+                  ),
+                  Text(
+                    '짧은 시간동안 많은 친구들에게 ',
+                    style: TextStyle(
+                        fontWeight: FontWeight.normal, fontSize: 16.0),
+                  ),
+                  SizedBox(
+                    height: 3.0,
+                  ),
+                  Text(
+                    '당신이 소개됩니다.',
+                    style: TextStyle(
+                        fontWeight: FontWeight.normal, fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+            content: Column(
+              children: [
+                Text(
+                  '무료 : 1회',
+                  style: TextStyle(color: Colors.pink),
+                ),
+              ],
+            ),
+            actions: [
+              Padding(
+                padding: EdgeInsets.only(bottom: 3.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 3.2,
+                        height: MediaQuery.of(context).size.height / 18.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 12.0),
+                          child: Text(
+                            '아니요',
+                            textAlign: TextAlign.center,
+                            style:
+                                TextStyle(color: Colors.grey, fontSize: 18.0),
+                          ),
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    GestureDetector(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 3.2,
+                        height: MediaQuery.of(context).size.height / 18.0,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.pink),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 12.0),
+                          child: Text(
+                            '네',
+                            textAlign: TextAlign.center,
+                            style:
+                                TextStyle(color: Colors.pink, fontSize: 18.0),
+                          ),
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      );
+    },
+  );
 }
