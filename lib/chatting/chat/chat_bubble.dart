@@ -46,15 +46,6 @@ class _ChatBubblesState extends State<ChatBubbles> {
           mainAxisAlignment:
               widget.isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
           children: [
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 40.0),
-            //   child: Text(
-            //     DateFormat.jm().format(
-            //       DateTime.now(),
-            //     ),
-            //     style: TextStyle(fontSize: 10.0),
-            //   ),
-            // ),
             if (widget.isMe)
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 10, 45, 0),

@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_01/confing/Colors.dart';
 import 'package:flutter_01/screens/Chat_Screen.dart';
+import 'package:flutter_01/screens/Onboarding.dart';
+import 'package:flutter_01/screens/StoreyW2.dart';
+
 import 'package:flutter_01/screens/Woman/StoreyW.dart';
 
 import 'package:flutter_01/screens/Woman/HomeW.dart';
 import 'package:flutter_01/screens/Woman/ProfileW.dart';
 import 'dart:math' as math;
+
+import 'package:flutter_01/screens/Woman/pick.dart';
 
 class WomanPage extends StatefulWidget {
   const WomanPage({Key? key}) : super(key: key);
@@ -23,7 +28,13 @@ class _WomanPageState extends State<WomanPage> {
   }
 
   int _currentIndex = 0;
-  final List<Widget> _children = [HomeW(), StoreyW(), ChatScreen(), ProfileW()];
+  final List<Widget> _children = [
+    HomeW(),
+    StoreyW(),
+    Pick(),
+    ChatScreen(),
+    ProfileW()
+  ];
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
@@ -46,6 +57,10 @@ class _WomanPageState extends State<WomanPage> {
           new BottomNavigationBarItem(
               icon: Icon(Icons.connect_without_contact),
               label: "스토리",
+              backgroundColor: Colors.white),
+          new BottomNavigationBarItem(
+              icon: const Icon(Icons.collections),
+              label: "위픽",
               backgroundColor: Colors.white),
           new BottomNavigationBarItem(
               icon: const Icon(Icons.chat),

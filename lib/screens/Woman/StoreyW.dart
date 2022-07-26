@@ -16,6 +16,31 @@ class StoreyW extends StatefulWidget {
 }
 
 class _FinState extends State<StoreyW> with TickerProviderStateMixin {
+  final List<String> _tabthree = [
+    'https://images.mypetlife.co.kr/content/uploads/2021/10/19151330/corgi-g1a1774f95_1280-1024x682.jpg',
+    'https://images.mypetlife.co.kr/content/uploads/2019/09/09152937/blind-dog-2-1024x683.jpg',
+    'https://cdnweb01.wikitree.co.kr/webdata/editor/202103/02/img_20210302105652_f4642f08.webp',
+    'https://t1.daumcdn.net/cfile/tistory/9982424C5F56648032',
+    'https://image.edaily.co.kr/images/Photo/files/NP/S/2022/03/PS22032301333.jpg',
+    'https://cdn.newspenguin.com/news/photo/202006/1837_5156_215.jpg'
+  ];
+  final List<String> _tabtwo = [
+    'http://file.instiz.net/data/file/20130629/2/1/2/212a2b8986d48c67903194655f2130a2',
+    'https://t1.daumcdn.net/cfile/tistory/273B3A475882346E13',
+    'http://www.safetimes.co.kr/news/photo/201711/51302_19070_3918.jpg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBcTJe6IfIA0MA6X8v1NlPPO0lB70JvS7Kug&usqp=CAU',
+    'https://thumbnews.nateimg.co.kr/view610///news.nateimg.co.kr/orgImg/iz/2021/04/29/6bbc25b9-e735-4d0b-a59d-fb7a99e0723d.jpg',
+    'https://file.mk.co.kr/meet/neds/2021/02/image_readmed_2021_155171_16135128614543079.jpg'
+  ];
+  final List<String> _tabone = [
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBcTJe6IfIA0MA6X8v1NlPPO0lB70JvS7Kug&usqp=CAU',
+    'https://thumbnews.nateimg.co.kr/view610///news.nateimg.co.kr/orgImg/iz/2021/04/29/6bbc25b9-e735-4d0b-a59d-fb7a99e0723d.jpg',
+    'https://file.mk.co.kr/meet/neds/2021/02/image_readmed_2021_155171_16135128614543079.jpg',
+    'http://file.instiz.net/data/file/20130629/2/1/2/212a2b8986d48c67903194655f2130a2',
+    'https://t1.daumcdn.net/cfile/tistory/273B3A475882346E13',
+    'http://www.safetimes.co.kr/news/photo/201711/51302_19070_3918.jpg',
+  ];
+
   late TabController tabController;
   @override
   void initState() {
@@ -128,54 +153,105 @@ class _FinState extends State<StoreyW> with TickerProviderStateMixin {
   }
 
   Widget _tabMenu() {
-    return TabBar(
-        indicatorColor: Colors.black, // 탭바 밑에 줄 색깔
-        unselectedLabelColor: Colors.grey,
-        labelColor: Colors.pink,
-        controller: tabController,
-        indicatorWeight: 1, // 탭바 밑에줄 굵기
-        tabs: [
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 15),
-            child: Text(
-              '최신순',
-              style: TextStyle(fontSize: 20.0),
+    return Column(
+      children: [
+        TabBar(
+          indicatorColor: Colors.black, // 탭바 밑에 줄 색깔
+          unselectedLabelColor: Colors.grey,
+          labelColor: Colors.pink,
+          controller: tabController,
+          indicatorWeight: 1, // 탭바 밑에줄 굵기
+          tabs: [
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              child: Text(
+                '최신순',
+                style: TextStyle(fontSize: 20.0),
+              ),
+            ),
+            Container(
+              child: Text(
+                '인기순',
+                style: TextStyle(fontSize: 20.0),
+              ),
+            ),
+            Container(
+              child: Text(
+                '댕냥이',
+                style: TextStyle(fontSize: 20.0),
+              ),
+            ),
+          ],
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Container(
+            color: Colors.white,
+            height: 1000,
+            child: TabBarView(
+              controller: tabController,
+              children: [
+                Tabone(),
+                Tabtwo(),
+                Tabthree(),
+              ],
             ),
           ),
-          Container(
-            child: Text(
-              '인기순',
-              style: TextStyle(fontSize: 20.0),
-            ),
-          ),
-          Container(
-            child: Text(
-              '댕냥이',
-              style: TextStyle(fontSize: 20.0),
-            ),
-          ),
-        ]);
+        ),
+      ],
+    );
   }
 
-  Widget _tabView() {
+  Widget Tabone() {
     return GridView.builder(
         physics: const NeverScrollableScrollPhysics(), // 스크롤 사용안함
         shrinkWrap: true, // 스크롤 사용여부
-        itemCount: 100,
+        itemCount: _tabone.length,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
             childAspectRatio: 1,
             mainAxisSpacing: 1,
             crossAxisSpacing: 1),
         itemBuilder: (BuildContext context, int index) {
-          return Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(
-                    'images/김유정.jpg',
-                  ),
-                  fit: BoxFit.cover),
-            ),
+          return Image.network(
+            _tabone[index],
+            fit: BoxFit.fill,
+          );
+        });
+  }
+
+  Widget Tabtwo() {
+    return GridView.builder(
+        physics: const NeverScrollableScrollPhysics(), // 스크롤 사용안함
+        shrinkWrap: true, // 스크롤 사용여부
+        itemCount: _tabtwo.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            childAspectRatio: 1,
+            mainAxisSpacing: 1,
+            crossAxisSpacing: 1),
+        itemBuilder: (BuildContext context, int index) {
+          return Image.network(
+            _tabtwo[index],
+            fit: BoxFit.fill,
+          );
+        });
+  }
+
+  Widget Tabthree() {
+    return GridView.builder(
+        physics: const NeverScrollableScrollPhysics(), // 스크롤 사용안함
+        shrinkWrap: true, // 스크롤 사용여부
+        itemCount: _tabthree.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            childAspectRatio: 1,
+            mainAxisSpacing: 1,
+            crossAxisSpacing: 1),
+        itemBuilder: (BuildContext context, int index) {
+          return Image.network(
+            _tabthree[index],
+            fit: BoxFit.fill,
           );
         });
   }
@@ -247,18 +323,10 @@ class _FinState extends State<StoreyW> with TickerProviderStateMixin {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: SafeArea(
-          child: Column(
-            children: [
-              _bodyheader(),
-              _tabMenu(),
-              _tabView(),
-            ],
-          ),
-        ),
-      ),
+      body: ListView(children: [
+        _bodyheader(),
+        _tabMenu(),
+      ]),
     );
   }
 }

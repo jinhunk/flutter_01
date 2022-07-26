@@ -86,7 +86,7 @@ class _ProfileWState extends State<ProfileW> {
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    '위피에서 친구 & 커플 된 사연 보내고 선물 받기!',
+                    '윙클에서 친구 & 커플 된 사연 보내고 선물 받기!',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 14.0,

@@ -12,7 +12,7 @@ class profiletop extends StatelessWidget {
           Column(
             children: [
               Text(
-                '           위피에서 만난\n소중한 인연을 소개해주세요!',
+                '           윙클에서 만난\n소중한 인연을 소개해주세요!',
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
