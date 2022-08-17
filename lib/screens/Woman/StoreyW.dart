@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_01/Model/UserModel.dart';
@@ -7,6 +8,7 @@ import 'dart:math' as math;
 
 import 'package:flutter_01/screens/jelly.dart';
 import 'package:flutter_01/screens/storey2.dart';
+import 'package:get/get.dart';
 
 class StoreyW extends StatefulWidget {
   const StoreyW({Key? key}) : super(key: key);
@@ -142,8 +144,9 @@ class _FinState extends State<StoreyW> with TickerProviderStateMixin {
                 ),
               ),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => (Storey2())));
+                Get.to(
+                  Storey2(),
+                );
               },
             ),
           ],
