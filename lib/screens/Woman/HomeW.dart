@@ -20,7 +20,7 @@ class _HomeWState extends State<HomeW> with TickerProviderStateMixin {
   late TabController _tabController;
   @override
   void initState() {
-    _tabController = TabController(length:2 , vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
     userdata();
     super.initState();
   }
@@ -308,11 +308,10 @@ class _HomeWState extends State<HomeW> with TickerProviderStateMixin {
                 top: 90,
                 child: Container(
                   width: MediaQuery.of(context).size.width / 1.0,
-                  height: MediaQuery.of(context).size.height / 14.5,
+                  height: MediaQuery.of(context).size.height / 9.0,
                   child: CircleAvatar(
-                    radius: 70.0,
                     backgroundImage: NetworkImage(
-                        'https://img.freepik.com/free-vector/smile-face-with-peace-hippie-gesture-t-shirt-print-vector-hand-drawn-cartoon-character-illustration-smile-emoji-face-peace-gesture-print-for-t-shirt-poster-sticker-logo-concept_92289-3342.jpg'),
+                        'https://cdn.class101.net/images/9addd90f-3dc6-441b-8870-b1d85a1496da'),
                   ),
                 ),
               ),

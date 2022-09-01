@@ -86,11 +86,16 @@ class _FinState extends State<StoreyW> with TickerProviderStateMixin {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           color: Colors.pink),
-                      child: Text(
-                        '+',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white, fontSize: 20.0, height: 1),
+                      child: GestureDetector(
+                        child: Text(
+                          '+',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white, fontSize: 20.0, height: 1),
+                        ),
+                        onTap: () {
+                          Get.to(Storey2());
+                        },
                       ),
                     ),
                   ),
@@ -129,8 +134,9 @@ class _FinState extends State<StoreyW> with TickerProviderStateMixin {
                   child: Row(
                     children: [
                       Icon(
-                        Icons.border_color,
+                        Icons.mode_edit_outlined,
                         color: Colors.white,
+                        size: 18,
                       ),
                       SizedBox(
                         width: 3.0,

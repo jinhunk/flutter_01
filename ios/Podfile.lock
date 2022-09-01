@@ -460,6 +460,8 @@ PODS:
   - image_picker (0.0.1):
     - Flutter
   - leveldb-library (1.22.1)
+  - location (0.0.1):
+    - Flutter
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -484,6 +486,7 @@ DEPENDENCIES:
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - location (from `.symlinks/plugins/location/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
 
@@ -529,6 +532,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/image_cropper/ios"
   image_picker:
     :path: ".symlinks/plugins/image_picker/ios"
+  location:
+    :path: ".symlinks/plugins/location/ios"
   path_provider_ios:
     :path: ".symlinks/plugins/path_provider_ios/ios"
   sqflite:
@@ -547,7 +552,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 56fb7216d87e0e6ec2feddefa9d8a392fe8b2c18
   FirebaseFirestore: 0e7321a508cc9de54316ec45400caba6b5719beb
   FirebaseStorage: 815410224b548172c578f02554a86bbc8f817f50
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_chat_bubble: cad6265ec611ba0f7bede70eabc26fdfce9bf2b0
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   geocoding: 32cfcdb16d38d907caaba65e2e42ad10d38bee58
@@ -560,6 +565,7 @@ SPEC CHECKSUMS:
   image_cropper: 60c2789d1f1a78c873235d4319ca0c34a69f2d98
   image_picker: 9aa50e1d8cdacdbed739e925b7eea16d014367e6
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
+  location: 3a2eed4dd2fab25e7b7baf2a9efefe82b512d740
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58

@@ -1,7 +1,13 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_01/Model/UserModel.dart';
+import 'package:flutter_01/screens/Woman/StoreyW.dart';
+import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 
 import 'package:image_picker/image_picker.dart';
@@ -117,13 +123,17 @@ class _Storey2State extends State<Storey2> {
         actions: [
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Text(
-              '등록',
-              style: TextStyle(
-                  color: Colors.pink,
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold),
-            ),
+            child: GestureDetector(
+                child: Text(
+                  '등록',
+                  style: TextStyle(
+                      color: Colors.pink,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold),
+                ),
+                onTap: () {
+                  Get.back();
+                }),
           )
         ],
         bottom: PreferredSize(

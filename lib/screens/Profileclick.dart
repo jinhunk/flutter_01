@@ -127,7 +127,7 @@ class _ProfileclickState extends State<Profileclick> {
           Row(
             children: [
               Text(
-                '심심후,',
+                '진민이,',
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,

@@ -192,22 +192,28 @@ class _ProfileWState extends State<ProfileW> {
               SizedBox(
                 height: 10.0,
               ),
-              GestureDetector(
-                child: Row(
-                  children: [
-                    Icon(Icons.check_circle),
-                    SizedBox(
-                      width: 5.0,
-                    ),
-                    Text('프로필 인증'),
-                  ],
+              Padding(
+                padding: const EdgeInsets.only(left: 3.0),
+                child: GestureDetector(
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.check_circle,
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      Text('프로필 인증'),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const profilecertification()));
+                  },
                 ),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const profilecertification()));
-                },
               ),
             ],
           ),

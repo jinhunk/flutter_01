@@ -29,6 +29,82 @@ class _PickState extends State<Pick> {
     return result;
   } //애니메이션
 
+  Widget _CarouselSliderText() {
+    return Positioned(
+      top: 445.0,
+      left: 15.0,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '이정재, 29',
+            style: TextStyle(color: Colors.white, fontSize: 25.0),
+          ),
+          SizedBox(
+            height: 5.0,
+          ),
+          Row(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width / 4.5,
+                height: MediaQuery.of(context).size.height / 30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(2),
+                  border: Border.all(color: Colors.white),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.location_on_outlined,
+                        size: 20.0,
+                        color: Color.fromARGB(255, 248, 244, 244),
+                      ),
+                      Text(
+                        '12km',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 5.0,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 4.5,
+                height: MediaQuery.of(context).size.height / 30,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(2),
+                    border: Border.all(color: Colors.white)),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 5.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.mic,
+                        color: Colors.white,
+                        size: 20.0,
+                      ),
+                      SizedBox(
+                        width: 3.0,
+                      ),
+                      Text(
+                        '목소리',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _body() {
     return Column(
       children: [
@@ -47,91 +123,39 @@ class _PickState extends State<Pick> {
                       height: MediaQuery.of(context).size.height / 1.6,
                     ),
                   ),
-                  Positioned(
-                    top: 445.0,
-                    left: 15.0,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '이정재, 29',
-                          style: TextStyle(color: Colors.white, fontSize: 25.0),
-                        ),
-                        SizedBox(
-                          height: 5.0,
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width / 4.5,
-                              height: MediaQuery.of(context).size.height / 30,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(2),
-                                border: Border.all(color: Colors.white),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 5.0),
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.location_on_outlined,
-                                      size: 20.0,
-                                      color: Color.fromARGB(255, 248, 244, 244),
-                                    ),
-                                    Text(
-                                      '12km',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 18.0),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 5.0,
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width / 4.5,
-                              height: MediaQuery.of(context).size.height / 30,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(2),
-                                  border: Border.all(color: Colors.white)),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 5.0),
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.mic,
-                                      color: Colors.white,
-                                      size: 20.0,
-                                    ),
-                                    SizedBox(
-                                      width: 3.0,
-                                    ),
-                                    Text(
-                                      '목소리',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 18.0),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                  _CarouselSliderText(),
+                ],
+              );
+            } else if (index == 1) {
+              return Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Image.network(
+                      imgList[index],
+                      fit: BoxFit.fill,
+                      height: MediaQuery.of(context).size.height / 1.6,
                     ),
                   ),
+                  _CarouselSliderText(),
+                ],
+              );
+            } else if (index == 2) {
+              return Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Image.network(
+                      imgList[index],
+                      fit: BoxFit.fill,
+                      height: MediaQuery.of(context).size.height / 1.6,
+                    ),
+                  ),
+                  _CarouselSliderText(),
                 ],
               );
             } else {
-              return ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Image.network(
-                  imgList[index],
-                  fit: BoxFit.fill,
-                ),
-              );
+              return Container();
             }
           },
           options: CarouselOptions(

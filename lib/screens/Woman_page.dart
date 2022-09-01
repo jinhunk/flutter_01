@@ -23,7 +23,14 @@ class WomanPage extends GetView<BottomnaviController> {
       () => Scaffold(
         body: IndexedStack(index: controller.pageIndex.value, children: [
           const HomeW(),
-          const StoreyW(),
+          Navigator(
+            key: controller.searchPageNaviationkey,
+            onGenerateRoute: (routeSettings) {
+              return MaterialPageRoute(
+                builder: (context) => const StoreyW(),
+              );
+            },
+          ),
           const Pick(),
           const ChatScreen(),
           const ProfileW(),
