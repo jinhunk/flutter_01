@@ -167,7 +167,7 @@ class _ProfileWState extends State<ProfileW> {
                       SizedBox(
                         width: 5.0,
                       ),
-                      Text('반려동물 등록'),
+                      Text('반려동물 등록ㅎ'),
                     ],
                   ),
                   onTap: () {

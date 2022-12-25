@@ -45,7 +45,7 @@ class WomanPage extends GetView<BottomnaviController> {
           currentIndex: controller.pageIndex.value,
           items: [
             new BottomNavigationBarItem(
-                icon: Icon(Icons.favorite),
+                icon: Icon(Icons.home),
                 label: "소개",
                 backgroundColor: Colors.white),
             new BottomNavigationBarItem(
